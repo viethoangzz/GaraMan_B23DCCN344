@@ -1,0 +1,5 @@
+<form class="grid-2" method="get" action="${pageContext.request.contextPath}${formAction}">
+<label>Start Date<input type="date" name="startDate" required value="${fn:escapeXml(param.startDate)}"/></label>
+<label>End Date<input type="date" name="endDate" required value="${fn:escapeXml(param.endDate)}"/></label>
+<div><button class="button primary" type="submit">View Statistics</button> <a class="button light" href="${pageContext.request.contextPath}/app/reports">Back</a></div>
+</form>
