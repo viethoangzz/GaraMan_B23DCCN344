@@ -7,19 +7,8 @@ Java 17 · JSP/Servlet 4 · JDBC · MySQL · Tomcat 9 · Maven.
 1. Khách hàng: chọn **Tìm thông tin dịch vụ/phụ tùng** → nhập tên → xem danh sách có tên chứa từ khóa → chọn dịch vụ/phụ tùng → xem chi tiết.
 2. Nhân viên (vai trò MANAGER): chọn **Xem báo cáo** → **Thống kê khách hàng theo doanh thu** → chọn ngày bắt đầu/kết thúc → chọn khách hàng → xem các lần sửa xe → chọn lần sửa xe → xem hóa đơn.
 
-Đăng nhập/đăng xuất và phân quyền hỗ trợ hai luồng trên. Đã bỏ đăng ký, đặt lịch, CRUD danh mục, nhà cung cấp, nhập kho, tiếp nhận khách, phân công kỹ thuật viên, ghi nhận thanh toán và các loại thống kê khác.
+Đăng nhập/đăng xuất và phân quyền hỗ trợ hai luồng trên.
 
-## Chạy trong VS Code trên máy hiện tại
-
-Mở thư mục cha chứa `run.ps1`, chọn **Tasks: Run Task → GaraMan: Run** và nhập mật khẩu MySQL.
-Hoặc chạy trong terminal của thư mục cha:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File .\run.ps1
-```
-
-Mở http://localhost:18080/GaraMan/. Dừng bằng Ctrl+C trong terminal chạy server.
-Maven và Tomcat nằm trong `.tools` của thư mục cha. Đây là bộ công cụ local, không nằm trong mã nguồn đóng gói.
 
 | Tài khoản | Mật khẩu demo | Chức năng |
 |---|---|---|
