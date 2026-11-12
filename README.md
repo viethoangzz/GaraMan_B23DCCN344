@@ -1,46 +1,46 @@
-# GaraMan ? hai ch?c n?ng ch?nh
+# GaraMan — hai chức năng chính
 
-Java 17 ? JSP/Servlet 4 ? JDBC ? MySQL ? Tomcat 9 ? Maven.
+Java 17 · JSP/Servlet 4 · JDBC · MySQL · Tomcat 9 · Maven.
 
-## Ph?m vi
+## Phạm vi
 
-1. Kh?ch h?ng: ch?n **T?m th?ng tin d?ch v?/ph? t?ng** ? nh?p t?n ? xem danh s?ch c? t?n ch?a t? kh?a ? ch?n d?ch v?/ph? t?ng ? xem chi ti?t.
-2. Nh?n vi?n (vai tr? MANAGER): ch?n **Xem b?o c?o** ? **Th?ng k? kh?ch h?ng theo doanh thu** ? ch?n ng?y b?t ??u/k?t th?c ? ch?n kh?ch h?ng ? xem c?c l?n s?a xe ? ch?n l?n s?a xe ? xem h?a ??n.
+1. Khách hàng: chọn **Tìm thông tin dịch vụ/phụ tùng** → nhập tên → xem danh sách có tên chứa từ khóa → chọn dịch vụ/phụ tùng → xem chi tiết.
+2. Nhân viên (vai trò MANAGER): chọn **Xem báo cáo** → **Thống kê khách hàng theo doanh thu** → chọn ngày bắt đầu/kết thúc → chọn khách hàng → xem các lần sửa xe → chọn lần sửa xe → xem hóa đơn.
 
-??ng nh?p/??ng xu?t v? ph?n quy?n h? tr? hai lu?ng tr?n. ?? b? ??ng k?, ??t l?ch, CRUD danh m?c, nh? cung c?p, nh?p kho, ti?p nh?n kh?ch, ph?n c?ng k? thu?t vi?n, ghi nh?n thanh to?n v? c?c lo?i th?ng k? kh?c.
+Đăng nhập/đăng xuất và phân quyền hỗ trợ hai luồng trên. Đã bỏ đăng ký, đặt lịch, CRUD danh mục, nhà cung cấp, nhập kho, tiếp nhận khách, phân công kỹ thuật viên, ghi nhận thanh toán và các loại thống kê khác.
 
-## Ch?y trong VS Code tr?n m?y hi?n t?i
+## Chạy trong VS Code trên máy hiện tại
 
-M? th? m?c cha ch?a `run.ps1`, ch?n **Tasks: Run Task ? GaraMan: Run** v? nh?p m?t kh?u MySQL.
-Ho?c ch?y trong terminal c?a th? m?c cha:
+Mở thư mục cha chứa `run.ps1`, chọn **Tasks: Run Task → GaraMan: Run** và nhập mật khẩu MySQL.
+Hoặc chạy trong terminal của thư mục cha:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\run.ps1
 ```
 
-M? http://localhost:18080/GaraMan/. D?ng b?ng Ctrl+C trong terminal ch?y server.
-Maven v? Tomcat n?m trong `.tools` c?a th? m?c cha. ??y l? b? c?ng c? local, kh?ng n?m trong m? ngu?n ??ng g?i.
+Mở http://localhost:18080/GaraMan/. Dừng bằng Ctrl+C trong terminal chạy server.
+Maven và Tomcat nằm trong `.tools` của thư mục cha. Đây là bộ công cụ local, không nằm trong mã nguồn đóng gói.
 
-| T?i kho?n | M?t kh?u demo | Ch?c n?ng |
+| Tài khoản | Mật khẩu demo | Chức năng |
 |---|---|---|
-| customer | Demo@12345 | T?m ki?m d?ch v?/ph? t?ng |
-| manager | Demo@12345 | Th?ng k? kh?ch h?ng theo doanh thu |
+| customer | Demo@12345 | Tìm kiếm dịch vụ/phụ tùng |
+| manager | Demo@12345 | Thống kê khách hàng theo doanh thu |
 
-## C?i ??t tr?n m?y kh?c
+## Cài đặt trên máy khác
 
-C?i JDK 17+, Maven v? Tomcat 9; d?ng MySQL 8. Ch?y `01_schema.sql` r?i `02_seed_demo.sql` trong `src/main/resources/sql` tr?n database m?i. Schema m?i c? 9 b?ng ph?c v? hai lu?ng; d? li?u thanh to?n ch? d?ng ?? hi?n th? tr?ng th?i h?a ??n. Kh?ng ch?y l?i seed tr?n database ?? c? d? li?u.
+Cài JDK 17+, Maven và Tomcat 9; dùng MySQL 8. Chạy `01_schema.sql` rồi `02_seed_demo.sql` trong `src/main/resources/sql` trên database mới. Schema mới có 9 bảng phục vụ hai luồng; dữ liệu thanh toán chỉ dùng để hiển thị trạng thái hóa đơn. Không chạy lại seed trên database đã có dữ liệu.
 
-??t `DB_USER`, `DB_PASSWORD` cho ti?n tr?nh Tomcat. `DB_URL` m?c ??nh l? `jdbc:mysql://localhost:3306/garaman?useUnicode=true&characterEncoding=UTF-8&connectionTimeZone=SERVER`.
-Ch?y `mvn clean package`, ch?p `target/GaraMan.war` v?o `webapps` c?a Tomcat 9 r?i kh?i ??ng Tomcat. D?ng c?ng HTTP ???c c?u h?nh tr?n m?y ??.
+Đặt `DB_USER`, `DB_PASSWORD` cho tiến trình Tomcat. `DB_URL` mặc định là `jdbc:mysql://localhost:3306/garaman?useUnicode=true&characterEncoding=UTF-8&connectionTimeZone=SERVER`.
+Chạy `mvn clean package`, chép `target/GaraMan.war` vào `webapps` của Tomcat 9 rồi khởi động Tomcat. Dùng cổng HTTP được cấu hình trên máy đó.
 
-Database ?ang s? d?ng kh?ng b? x?a b?ng/d? li?u c? khi c?p nh?t ?ng d?ng. C?c ch?c n?ng c? ?? ???c lo?i kh?i servlet, giao di?n v? m? DAO/model; c?c t?i kho?n vai tr? SALES/WAREHOUSE kh?ng ??ng nh?p ???c v?o phi?n b?n n?y.
+Database đang sử dụng không bị xóa bảng/dữ liệu cũ khi cập nhật ứng dụng. Các chức năng cũ đã được loại khỏi servlet, giao diện và mã DAO/model; các tài khoản vai trò SALES/WAREHOUSE không đăng nhập được vào phiên bản này.
 
-## Ki?m tra d? li?u m?u
+## Kiểm tra dữ liệu mẫu
 
-- T?m `phanh`: DV005, PT012, PT013.
-- Th?ng k? 01/08/2026?31/08/2026: KH001 = 8.500.000, KH002 = 5.200.000, KH003 = 2.700.000 VN?.
-- KH001 ? LV007 ? HD007: t?ng 5.000.000 VN?, g?m ba d?ng chi ti?t.
-- Kho?ng ng?y bao g?m c? ng?y k?t th?c; m?c ??nh c?ng m?i h?a ??n. C? t?y ch?n ch? t?nh h?a ??n ?? thanh to?n.
+- Tìm `phanh`: DV005, PT012, PT013.
+- Thống kê 01/08/2026–31/08/2026: KH001 = 8.500.000, KH002 = 5.200.000, KH003 = 2.700.000 VNĐ.
+- KH001 → LV007 → HD007: tổng 5.000.000 VNĐ, gồm ba dòng chi tiết.
+- Khoảng ngày bao gồm cả ngày kết thúc; mặc định cộng mọi hóa đơn. Có tùy chọn chỉ tính hóa đơn đã thanh toán.
 
-`mvn test` ch?y ki?m th? m?t kh?u v? t? kh?a LIKE. K?ch b?n ch?c n?ng n?m trong `docs/TEST_CASES.md`.
-Khi server local ?ang ch?y, ch?y `powershell -ExecutionPolicy Bypass -File scripts/verify-scope.ps1` t? th? m?c d? ?n ?? ki?m tra hai lu?ng, ph?n quy?n v? c?c ???ng d?n ?? x?a. Script d?ng t?i kho?n/d? li?u demo v? ch? ??c d? li?u.
+`mvn test` chạy kiểm thử mật khẩu và từ khóa LIKE. Kịch bản chức năng nằm trong `docs/TEST_CASES.md`.
+Khi server local đang chạy, chạy `powershell -ExecutionPolicy Bypass -File scripts/verify-scope.ps1` từ thư mục dự án để kiểm tra hai luồng, phân quyền và các đường dẫn đã xóa. Script dùng tài khoản/dữ liệu demo và chỉ đọc dữ liệu.
